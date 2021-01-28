@@ -1,6 +1,6 @@
 ## AWS ECS Workshop completed infrastructure
 
-Based on the [AWS ECS workshop](https://github.com/spugachev/amazon-ecs-mythicalmysfits-workshop)
+Based on the [AWS ECS workshop](https://github.com/spugachev/amazon-ecs-mythicalmysfits-workshop)  
 Rewrite CloudFormation core stack and provision scripts into Terraform
 
 1) Used file-layout isolation (per services and per environment)
