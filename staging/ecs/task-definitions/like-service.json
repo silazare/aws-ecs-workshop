@@ -1,0 +1,57 @@
+[
+  {
+    "name": "like-service",
+    "image": "${mysfits_like_url}:1.0",
+    "cpu": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "hostPort": 80,
+        "protocol": "tcp",
+        "containerPort": 80
+      }
+    ],
+    "environment": [
+      {
+        "name": "MONOLITH_URL",
+        "value": "${alb_dns_name}"
+      },
+      {
+        "name": "CHAOSMODE",
+        "value": "${chaos_mode}"
+      },
+      {
+        "name": "LOGLEVEL",
+        "value": "${loglevel}"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "mysfits-fargate",
+        "awslogs-region": "eu-west-1",
+        "awslogs-stream-prefix": "awslogs-mysfits-service"
+      }
+    }
+  },
+  {
+    "name": "xray-daemon",
+    "image": "${mysfits_xray_url}:latest",
+    "cpu": 0,
+    "portMappings" : [
+        {
+            "hostPort": 2000,
+            "protocol": "udp",
+            "containerPort": 2000
+        }
+     ],
+     "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "mysfits-fargate",
+        "awslogs-region": "eu-west-1",
+        "awslogs-stream-prefix": "awslogs-mysfits-service"
+      }
+    }
+  }
+]

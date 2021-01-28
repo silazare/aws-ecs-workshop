@@ -1,0 +1,33 @@
+[
+  {
+    "name": "monolith-service",
+    "image": "${mysfits_monolith_url}:1.0",
+    "cpu": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "hostPort": 80,
+        "protocol": "tcp",
+        "containerPort": 80
+      }
+    ],
+    "environment": [
+      {
+        "name": "DDB_TABLE_NAME",
+        "value": "mysfits-fargate-table"
+      },
+      {
+        "name": "UPSTREAM_URL",
+        "value": "${alb_dns_name}"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "mysfits-fargate",
+        "awslogs-region": "eu-west-1",
+        "awslogs-stream-prefix": "awslogs-mysfits-service"
+      }
+    }
+  }
+]

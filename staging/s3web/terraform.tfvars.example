@@ -1,0 +1,4 @@
+ecs_remote_state_bucket = "<S3 bucket for ECS state>"
+ecs_remote_state_key    = "staging/ecs/terraform.tfstate"
+ecs_remote_state_region = "eu-west-1"
+ecs_dynamodb_table      = "<DynamoDB table name for ECS state lock>"
