@@ -1,6 +1,6 @@
 plan_file=.terraform/plan.terraform
 
-.PHONY: init plan apply destroy list fmt lint
+.PHONY: init plan apply destroy list output fmt lint
 
 init:
 	@rm -rf ./.terraform
@@ -22,7 +22,7 @@ output:
 	@terraform output
 
 fmt:
-	@terraform fmt
+	@terraform fmt -recursive
 
 lint:
 	@tflint -c ../../.tflint.hcl
